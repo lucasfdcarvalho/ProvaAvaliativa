@@ -44,5 +44,19 @@ namespace ProvaAvaliativa
             ItemPedido item = new ItemPedido(produto, quantidade);
             Itens.Add(item);
         }
+
+        public void CalcularTotal()
+        {
+            double totalSemDesconto = 0;
+
+            foreach (ItemPedido item in Itens)
+            {
+                totalSemDesconto += item.CalcularSubTotal();
+            }
+
+            double desconto = descontoStrategy.CalcularDesconto(this);
+
+            this.ValorTotal = totalSemDesconto - desconto;
+        }
     }
 }
