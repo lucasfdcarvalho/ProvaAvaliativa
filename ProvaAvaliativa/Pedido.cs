@@ -38,5 +38,11 @@ namespace ProvaAvaliativa
                 throw new ArgumentException("ID inválido");
             }
         }
+
+        public void AdicionarItem(Produto produto, int quantidade)
+        {
+            ItemPedido item = new ItemPedido(produto, quantidade);
+            Itens.Add(item);
+        }
     }
 }
