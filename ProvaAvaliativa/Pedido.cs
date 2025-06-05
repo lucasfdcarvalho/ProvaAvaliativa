@@ -43,11 +43,12 @@ namespace ProvaAvaliativa
         {
             ItemPedido item = new ItemPedido(produto, quantidade);
             Itens.Add(item);
+            Console.WriteLine("Item adicionado com sucesso!");
         }
 
         public void CalcularTotal()
         {
-            double totalSemDesconto = 0;
+            double totalSemDesconto = 0.0;
 
             foreach (ItemPedido item in Itens)
             {
@@ -57,6 +58,8 @@ namespace ProvaAvaliativa
             double desconto = descontoStrategy.CalcularDesconto(this);
 
             this.ValorTotal = totalSemDesconto - desconto;
+
+            Console.WriteLine($"Valor Total do Pedido: {this.ValorTotal}");
         }
     }
 }
