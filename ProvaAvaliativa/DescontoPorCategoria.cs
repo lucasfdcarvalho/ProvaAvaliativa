@@ -39,7 +39,17 @@ namespace ProvaAvaliativa
 
         public double CalcularDesconto(Pedido pedido)
         {
-            
+            double totalCategoria = 0.0;
+
+            foreach(ItemPedido item in pedido.Itens)
+            {
+                if(item.produto.Categoria == categoriaAlvo)
+                {
+                    totalCategoria += item.CalcularSubTotal();
+                }
+            }
+
+            return totalCategoria * percentualDesconto;
         }
     }
 }
