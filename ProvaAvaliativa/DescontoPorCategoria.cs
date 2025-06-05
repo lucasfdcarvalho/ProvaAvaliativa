@@ -31,7 +31,7 @@ namespace ProvaAvaliativa
 
         private void ValidarPercentual(double percentualDesconto)
         {
-            if (percentualDesconto < 0 || percentualDesconto > 1)
+            if (percentualDesconto <= 0 || percentualDesconto >= 1)
             {
                 throw new ArgumentException("O percentual de desconto deve estar entre 0 e 1");
             }
@@ -39,7 +39,7 @@ namespace ProvaAvaliativa
 
         public double CalcularDesconto(Pedido pedido)
         {
-
+            
         }
     }
 }
