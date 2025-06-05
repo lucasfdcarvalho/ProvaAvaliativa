@@ -16,7 +16,22 @@ namespace ProvaAvaliativa
 
         public DateTime Data { get; private set; }
 
-        public double ValorTotal { get; private set; }
+        public double ValorTotal
+        {
+            get
+            {
+                double totalSemDesconto = 0.0;
+
+                foreach (ItemPedido item in Itens)
+                {
+                    totalSemDesconto += item.CalcularSubTotal();
+                }
+
+                double desconto = descontoStrategy.CalcularDesconto(this);
+
+                return totalSemDesconto - desconto;
+            }
+        }
 
         private readonly IDescontoStrategy descontoStrategy;
 
@@ -46,20 +61,5 @@ namespace ProvaAvaliativa
             Console.WriteLine("Item adicionado com sucesso!");
         }
 
-        public void CalcularTotal()
-        {
-            double totalSemDesconto = 0.0;
-
-            foreach (ItemPedido item in Itens)
-            {
-                totalSemDesconto += item.CalcularSubTotal();
-            }
-
-            double desconto = descontoStrategy.CalcularDesconto(this);
-
-            this.ValorTotal = totalSemDesconto - desconto;
-
-            Console.WriteLine($"Valor Total do Pedido: {this.ValorTotal}");
-        }
     }
 }
