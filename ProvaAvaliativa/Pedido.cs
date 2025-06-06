@@ -35,7 +35,9 @@ namespace ProvaAvaliativa
 
         private readonly IDescontoStrategy descontoStrategy;
 
-        public Pedido(int id, Cliente cliente, IDescontoStrategy descontoStrategy)
+        private readonly ILogger logger;
+
+        public Pedido(int id, Cliente cliente, IDescontoStrategy descontoStrategy, ILogger logger)
         {
             ValidarId(id);
 
@@ -44,6 +46,7 @@ namespace ProvaAvaliativa
             this.descontoStrategy = descontoStrategy;
             Itens = new List<ItemPedido>();
             Data = DateTime.Now;
+            this.logger = logger;
         }
 
         private void ValidarId(int id)
@@ -58,7 +61,7 @@ namespace ProvaAvaliativa
         {
             ItemPedido item = new ItemPedido(produto, quantidade);
             Itens.Add(item);
-            Console.WriteLine("Item adicionado com sucesso!");
+            this.logger.Log("Item adicionado com sucesso!");
         }
 
     }
