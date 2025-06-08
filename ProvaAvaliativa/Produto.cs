@@ -34,7 +34,7 @@ namespace ProvaAvaliativa
         {
             if (id <= 0)
             {
-                throw new Exception("ID do produto inválido");
+                throw new ArgumentException("ID do produto inválido");
             }
         }
 
@@ -42,7 +42,7 @@ namespace ProvaAvaliativa
         {
             if (string.IsNullOrWhiteSpace(nome))
             {
-                throw new Exception("Nome do produto inválido");
+                throw new ArgumentException("Nome do produto inválido");
             }
         }
 
@@ -50,7 +50,7 @@ namespace ProvaAvaliativa
         {
             if (preco <= 0)
             {
-                throw new Exception("Preço do produto inválido");
+                throw new ArgumentException("Preço do produto inválido");
             }
         }
 
@@ -58,7 +58,7 @@ namespace ProvaAvaliativa
         {
             if (string.IsNullOrWhiteSpace(categoria))
             {
-                throw new Exception("Categoria do produto inválida");
+                throw new ArgumentException("Categoria do produto inválida");
             }
         }
     }

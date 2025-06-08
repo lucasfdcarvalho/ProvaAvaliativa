@@ -33,7 +33,7 @@ namespace ProvaAvaliativa
         {
             if (id <= 0)
             {
-                throw new Exception("ID do cliente inválido");
+                throw new ArgumentException("ID do cliente inválido");
             }
         }
 
@@ -41,7 +41,7 @@ namespace ProvaAvaliativa
         {
             if (string.IsNullOrWhiteSpace(nome))
             {
-                throw new Exception("Nome do cliente inválido");
+                throw new ArgumentException("Nome do cliente inválido");
             }
         }
 
@@ -49,7 +49,7 @@ namespace ProvaAvaliativa
         {
             if (string.IsNullOrWhiteSpace(email))
             {
-                throw new Exception("E-mail do cliente inválido");
+                throw new ArgumentException("E-mail do cliente inválido");
             }
         }
 
@@ -57,7 +57,7 @@ namespace ProvaAvaliativa
         {
             if (string.IsNullOrWhiteSpace(cpf) || cpf.Length != 11 || !cpf.All(char.IsDigit))
             {
-                throw new Exception("CPF inválido");
+                throw new ArgumentException("CPF inválido");
             }
         }
     }
